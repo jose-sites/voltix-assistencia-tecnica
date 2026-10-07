@@ -1,1 +1,444 @@
-<!doctype html>
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Voltix Assistência Técnica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=DM+Sans:wght@400;500;700&family=Newsreader:ital,wght@0,400;0,500;1,400&display=swap">
+<style>
+/* Layout: página única estilo vitrine, hero com ilustração, faixa escura de diferenciais, carrossel de serviços, números, depoimento + CTA e rodapé. Visual único (claro lavanda + painéis escuros + destaque lima). */
+:root {
+  --bg: #eeeaff;
+  --bg-2: #f7f6ff;
+  --ink: #12101f;
+  --ink-soft: #4b4863;
+  --violet: #7b61ff;
+  --violet-deep: #3b2fa0;
+  --lime: #d4f23c;
+  --night: #15132a;
+  --night-2: #231f4a;
+  --card: #e6e4f1;
+  --white: #ffffff;
+  --f-display: "Outfit", system-ui, sans-serif;
+  --f-body: "DM Sans", system-ui, sans-serif;
+  --f-quote: "Newsreader", Georgia, serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; background: var(--bg-2); color: var(--ink);
+  font-family: var(--f-body); font-size: 16px; line-height: 1.55;
+  padding-inline: 16px; padding-block: 16px 0;
+}
+a { color: inherit; text-decoration: none; }
+:focus-visible { outline: 3px solid var(--violet); outline-offset: 3px; border-radius: 8px; }
+.wrap { width: 100%; max-width: none; margin-inline: auto; position: relative; }
+h1, h2, h3 { font-family: var(--f-display); margin: 0; text-wrap: balance; }
+
+/* topo */
+.top {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding-block: 8px 0;
+}
+.brand { display: flex; align-items: center; gap: 10px; font-family: var(--f-display); font-weight: 700; letter-spacing: .14em; font-size: 15px; }
+.brand svg { width: 34px; height: 34px; }
+.nav { display: flex; gap: 28px; font-size: 14px; font-weight: 500; }
+.nav a:hover { color: var(--violet); }
+.pill {
+  display: inline-flex; align-items: center; gap: 10px; border: 1px solid #c9c3ee; background: rgba(255,255,255,.6);
+  padding: 10px 14px 10px 20px; border-radius: 999px; font-weight: 500; font-size: 14px; white-space: nowrap;
+}
+.pill i { width: 28px; height: 28px; border-radius: 50%; background: var(--lime); display: grid; place-items: center; }
+.pill i svg { width: 14px; height: 14px; }
+
+/* hero */
+.hero-bg {
+  background: linear-gradient(160deg, #e4defc 0%, #f1eeff 55%, var(--bg-2) 100%);
+  border-radius: 28px; padding: 20px 20px 48px; margin-top: 8px; overflow: hidden;
+}
+.hero { display: grid; grid-template-columns: 1.05fr 1fr; gap: 24px; align-items: center; padding-top: 28px; padding-left: 84px; }
+.eyebrow { display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--violet-deep); }
+.eyebrow svg { width: 16px; height: 16px; }
+.hero h1 { font-size: clamp(44px, 7vw, 84px); line-height: .98; font-weight: 600; letter-spacing: -.02em; margin-block: 16px 20px; }
+.hero h1 em {
+  font-style: normal; display: block;
+  background: linear-gradient(90deg, #a48bff, #5a49e8); -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.hero p { max-width: 34ch; color: var(--ink-soft); margin: 0 0 28px; font-size: 17px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 18px; background: var(--lime); color: var(--ink);
+  padding: 8px 8px 8px 26px; border-radius: 999px; font-weight: 700; font-size: 13px; letter-spacing: .08em; text-transform: uppercase;
+}
+.btn i { width: 42px; height: 42px; border-radius: 50%; background: var(--ink); display: grid; place-items: center; }
+.btn i svg { width: 18px; height: 18px; stroke: #fff; }
+.btn:hover i { background: var(--violet-deep); }
+.art { position: relative; min-width: 0; }
+.art svg { width: 100%; height: auto; display: block; }
+.chip {
+  position: absolute; background: #fff; border-radius: 14px; padding: 8px 12px; font-size: 12px; font-weight: 700;
+  box-shadow: 0 10px 30px rgba(59,47,160,.18); display: flex; align-items: center; gap: 8px;
+}
+.chip b { width: 8px; height: 8px; border-radius: 50%; background: #2fbf71; }
+.chip.c1 { left: 2%; bottom: 14%; }
+.chip.c2 { right: 4%; top: 2%; }
+
+/* rail lateral */
+.rail {
+  position: absolute; left: 0; top: 36px; width: 56px; padding: 14px 0; border-radius: 28px; background: rgba(255,255,255,.75);
+  display: flex; flex-direction: column; align-items: center; gap: 14px; z-index: 2;
+}
+.rail a { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; color: var(--ink); }
+.rail a.on { background: var(--ink); color: #fff; }
+.rail a:hover:not(.on) { background: #e4defc; }
+.rail svg { width: 20px; height: 20px; }
+
+/* diferenciais */
+.band { background: var(--night); color: #fff; border-radius: 22px; padding: 28px 32px 32px; margin-top: -24px; position: relative; }
+.label { font-size: 11px; letter-spacing: .18em; text-transform: uppercase; font-weight: 700; color: #9a88ff; margin-bottom: 20px; }
+.feats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+.feat { padding-inline: 24px; border-left: 1px solid rgba(255,255,255,.12); min-width: 0; }
+.feat:first-child { padding-left: 0; border-left: 0; }
+.feat svg { width: 30px; height: 30px; stroke: var(--lime); fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; margin-bottom: 14px; }
+.feat h3 { font-size: 14px; letter-spacing: .06em; text-transform: uppercase; font-weight: 500; margin-bottom: 10px; }
+.feat p { margin: 0; font-size: 13px; color: #b9b5d6; }
+
+/* serviços */
+.picks { display: grid; grid-template-columns: 200px 1fr; gap: 24px; align-items: center; padding-block: 56px 32px; }
+.picks h2 { font-size: 18px; letter-spacing: .08em; text-transform: uppercase; font-weight: 500; line-height: 1.3; }
+.picks h2::after { content: ""; display: block; width: 28px; height: 2px; background: var(--violet); margin-top: 14px; }
+.arrows { display: flex; gap: 12px; margin-top: 56px; }
+.arrows button {
+  width: 52px; height: 52px; border-radius: 50%; border: 0; cursor: pointer; display: grid; place-items: center;
+  background: #fff; color: var(--ink); box-shadow: 0 2px 10px rgba(18,16,31,.08);
+}
+.arrows button + button { background: var(--ink); color: #fff; }
+.arrows svg { width: 18px; height: 18px; }
+.track { display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; min-width: 0; }
+.track::-webkit-scrollbar { display: none; }
+.item { flex: 0 0 calc((100% - 42px) / 4); min-width: 190px; scroll-snap-align: start; background: var(--card); border-radius: 18px; padding: 16px; }
+.item .ph { aspect-ratio: 1 / 1; display: grid; place-items: center; overflow: hidden; border-radius: 12px; background: #d7d4e5; }
+.item .ph svg { width: 68%; height: auto; }
+.item .ph img { width: 100%; height: 100%; display: block; object-fit: cover; }
+.item h3 { font-size: 14px; font-weight: 500; margin-top: 4px; }
+.item .row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.item .price { font-weight: 700; font-size: 15px; }
+.item .price small { display: block; font-weight: 400; font-size: 11px; color: var(--ink-soft); }
+.item .go { width: 28px; height: 28px; border-radius: 50%; background: var(--lime); display: grid; place-items: center; flex: none; }
+.item .go svg { width: 13px; height: 13px; }
+
+/* números */
+.stats { background: linear-gradient(90deg, #6a4fe0, #3b2fa0); color: #fff; border-radius: 16px; padding: 22px 32px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.stat { display: flex; align-items: center; gap: 14px; min-width: 0; }
+.stat svg { width: 34px; height: 34px; flex: none; fill: none; stroke: #fff; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.stat strong { display: block; font-family: var(--f-display); font-size: 24px; font-weight: 500; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.stat span { font-size: 12px; color: #d8d2ff; }
+
+/* depoimento + cta */
+.close { background: linear-gradient(120deg, #1a1740, #2d2470 70%, #3a2d93); color: #fff; border-radius: 22px; margin-top: 24px; display: grid; grid-template-columns: .8fr 1.1fr 1fr; gap: 24px; align-items: center; overflow: hidden; padding: 32px 32px 0; }
+.close figure { margin: 0; align-self: end; min-width: 0; }
+.close figure svg { width: 100%; max-width: 240px; height: auto; display: block; margin-inline: auto; }
+.quote { min-width: 0; padding-bottom: 32px; }
+.quote .mark { font-family: var(--f-quote); font-size: 80px; line-height: .6; color: var(--lime); display: block; }
+.quote blockquote { margin: 8px 0 18px; font-family: var(--f-quote); font-size: clamp(22px, 2.6vw, 28px); line-height: 1.3; }
+.quote cite { font-style: normal; font-size: 14px; display: block; }
+.quote cite small { display: block; color: #b9b5d6; font-size: 13px; }
+.cta { border: 1px solid #7664e8; border-radius: 18px; padding: 24px; background: rgba(15,13,38,.55); margin-bottom: 32px; min-width: 0; }
+.cta h2 { font-size: 20px; letter-spacing: .04em; text-transform: uppercase; font-weight: 500; line-height: 1.25; }
+.cta p { color: #c9c5e6; font-size: 14px; margin: 10px 0 20px; }
+.cta .btn { background: var(--lime); }
+.phone { margin-top: 16px; font-size: 13px; color: #c9c5e6; }
+.phone b { color: #fff; font-variant-numeric: tabular-nums; user-select: all; }
+
+/* rodapé */
+footer { margin-top: 40px; border-top: 1px solid #d9d5ef; padding-block: 28px 32px; font-size: 14px; color: var(--ink-soft); }
+.fgrid { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 24px; }
+.fgrid h4 { margin: 0 0 8px; font-family: var(--f-display); font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink); }
+.fgrid p { margin: 0 0 4px; }
+.fgrid > div { min-width: 0; }
+/* responsivo */
+@media (max-width: 1000px) {
+  .rail { display: none; }
+  .hero { padding-left: 0; grid-template-columns: 1fr; }
+  .nav { display: none; }
+  .feats { grid-template-columns: 1fr 1fr; row-gap: 28px; }
+  .feat:nth-child(3) { padding-left: 0; border-left: 0; }
+  .picks { grid-template-columns: 1fr; padding-top: 40px; }
+  .arrows { margin-top: 16px; }
+  .item { flex-basis: calc((100% - 14px) / 2); }
+  .stats { grid-template-columns: 1fr 1fr; padding-inline: 24px; }
+  .close { grid-template-columns: 1fr; padding-inline: 24px; }
+  .close figure { order: 3; }
+  .cta { margin-bottom: 0; }
+  .fgrid { grid-template-columns: 1fr 1fr; }
+  .fgrid > div:first-child { grid-column: 1 / -1; }
+}
+@media (max-width: 520px) {
+  body { padding-inline: 10px; padding-top: 10px; }
+  .top { gap: 8px; }
+  .brand { gap: 6px; font-size: 13px; }
+  .brand svg { width: 30px; height: 30px; }
+  .pill { gap: 7px; padding: 7px 7px 7px 12px; font-size: 12px; }
+  .pill i { width: 26px; height: 26px; }
+  .hero-bg { padding: 16px 16px 40px; border-radius: 22px; }
+  .hero { gap: 14px; padding-top: 22px; }
+  .hero h1 { font-size: clamp(36px, 12vw, 52px); margin-block: 14px 18px; }
+  .hero p { font-size: 16px; }
+  .art { margin-inline: -6px; }
+  .band { padding: 24px 20px; }
+  .feats { grid-template-columns: 1fr; }
+  .feat, .feat:nth-child(3) { padding: 0; border-left: 0; }
+  .picks { gap: 18px; padding-block: 36px 28px; }
+  .picks > div:first-child { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; }
+  .arrows { margin-top: 0; flex: none; }
+  .arrows button { width: 44px; height: 44px; }
+  .track { scroll-padding-inline: 2px; }
+  .item { flex-basis: min(82%, 280px); }
+  .stats { grid-template-columns: 1fr 1fr; padding: 20px 16px; gap: 20px 12px; }
+  .stat { gap: 10px; }
+  .stat strong { font-size: 20px; }
+  .close { margin-top: 16px; padding-inline: 18px; }
+  .quote blockquote { font-size: 22px; }
+  .cta { padding: 20px; }
+  .fgrid { grid-template-columns: 1fr; }
+  .chip.c1 { left: 0; }
+}
+@media (max-width: 360px) {
+  .pill { padding-left: 9px; }
+  .pill i { display: none; }
+  .stats { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+
+<div class="wrap" id="topo">
+  <header class="top">
+    <a class="brand" href="#topo" aria-label="Voltix, início">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3 6 22h10l-2 15 20-22H23z" fill="#12101f"/></svg>
+      VOLTIX
+    </a>
+    <nav class="nav" aria-label="Principal">
+      <a href="#servicos">Serviços</a>
+      <a href="#diferenciais">Diferenciais</a>
+      <a href="#numeros">Resultados</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <a class="pill" href="#contato">Pedir orçamento <i><svg viewBox="0 0 24 24" fill="none" stroke="#12101f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></i></a>
+  </header>
+
+  <div class="hero-bg">
+    <nav class="rail" aria-label="Atalhos">
+      <a class="on" href="#topo" aria-label="Início"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3 3 11h2v9h5v-6h4v6h5v-9h2z"/></svg></a>
+      <a href="#servicos" aria-label="Serviços"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="6" height="6" rx="1.5"/><rect x="14" y="4" width="6" height="6" rx="1.5"/><rect x="4" y="14" width="6" height="6" rx="1.5"/><rect x="14" y="14" width="6" height="6" rx="1.5"/></svg></a>
+      <a href="#diferenciais" aria-label="Diferenciais"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="m12 3 8 4.5v9L12 21l-8-4.5v-9zM4 7.5l8 4.5 8-4.5M12 12v9"/></svg></a>
+      <a href="#numeros" aria-label="Resultados"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/></svg></a>
+      <a href="#contato" aria-label="Contato"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg></a>
+    </nav>
+
+    <section class="hero">
+      <div>
+        <div class="eyebrow"><svg viewBox="0 0 24 24" fill="#7b61ff"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg> Assistência técnica especializada</div>
+        <h1>Seu aparelho <em>VOLTA</em> a funcionar</h1>
+        <p>Celulares, notebooks, tablets e consoles. Diagnóstico grátis, peças com garantia e reparo na hora.</p>
+        <a class="btn" href="#servicos">Ver serviços <i><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></a>
+      </div>
+      <div class="art">
+        <div class="chip c2"><b></b> Reparo em até 24h</div>
+        <svg viewBox="0 0 540 470" role="img" aria-label="Ilustração de notebook, fone, relógio e celular">
+          <defs>
+            <linearGradient id="gScreen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#b9c6ee"/><stop offset=".55" stop-color="#8f9fd4"/><stop offset="1" stop-color="#5d6aa8"/></linearGradient>
+            <linearGradient id="gBody" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d9dae4"/><stop offset="1" stop-color="#9a9cae"/></linearGradient>
+            <linearGradient id="gPhone" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5b4f86"/><stop offset="1" stop-color="#2a2348"/></linearGradient>
+            <linearGradient id="gCircle" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#a99bff"/><stop offset="1" stop-color="#7b61ff"/></linearGradient>
+            <radialGradient id="gShadow"><stop offset="0" stop-color="#3b2fa0" stop-opacity=".35"/><stop offset="1" stop-color="#3b2fa0" stop-opacity="0"/></radialGradient>
+          </defs>
+          <circle cx="300" cy="190" r="165" fill="url(#gCircle)" opacity=".75"/>
+          <ellipse cx="270" cy="420" rx="210" ry="22" fill="url(#gShadow)"/>
+          <!-- notebook -->
+          <g transform="translate(20 70)">
+            <path d="M70 0h280l22 200H48z" fill="#2a2d3d"/>
+            <path d="M82 12h258l18 176H66z" fill="url(#gScreen)"/>
+            <path d="M82 150 160 90l50 40 50-60 98 118H66z" fill="#2f3a73" opacity=".45"/>
+            <path d="M30 206h360l-26 40H52z" fill="url(#gBody)"/>
+            <path d="M88 214h244l-8 14H96z" fill="#6f7188" opacity=".5"/>
+            <rect x="170" y="236" width="80" height="5" rx="2.5" fill="#7d7f96"/>
+          </g>
+          <!-- fone -->
+          <g transform="translate(335 8)" fill="none">
+            <path d="M18 138C-6 40 52 -4 108 4s100 50 80 134" stroke="#c9cad6" stroke-width="20" stroke-linecap="round"/>
+            <ellipse cx="30" cy="140" rx="30" ry="46" fill="#b9bac8"/>
+            <ellipse cx="34" cy="140" rx="18" ry="30" fill="#8c8ea4"/>
+            <ellipse cx="172" cy="140" rx="30" ry="46" fill="#cfd0dc"/>
+            <ellipse cx="168" cy="140" rx="18" ry="30" fill="#a2a4b8"/>
+          </g>
+          <!-- relógio -->
+          <g transform="translate(316 232)">
+            <rect x="26" y="-30" width="44" height="40" rx="10" fill="#9ea0b4"/>
+            <rect x="26" y="86" width="44" height="40" rx="10" fill="#9ea0b4"/>
+            <rect x="0" y="0" width="96" height="104" rx="24" fill="#c3c4d2"/>
+            <rect x="8" y="8" width="80" height="88" rx="18" fill="#1a1a26"/>
+            <circle cx="48" cy="52" r="30" fill="none" stroke="#3a3a52" stroke-width="2"/>
+            <path d="M48 52V32M48 52l14 8" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="48" cy="52" r="3" fill="#d4f23c"/>
+          </g>
+          <!-- celular -->
+          <g transform="translate(398 244) rotate(14)">
+            <rect x="0" y="0" width="112" height="196" rx="20" fill="url(#gPhone)"/>
+            <rect x="4" y="4" width="104" height="188" rx="17" fill="none" stroke="#7a6fb0" stroke-width="2"/>
+            <rect x="12" y="12" width="46" height="46" rx="12" fill="#1e1a36"/>
+            <circle cx="26" cy="26" r="8" fill="#0d0b1a" stroke="#8c80c8" stroke-width="2"/>
+            <circle cx="46" cy="30" r="8" fill="#0d0b1a" stroke="#8c80c8" stroke-width="2"/>
+            <circle cx="35" cy="46" r="8" fill="#0d0b1a" stroke="#8c80c8" stroke-width="2"/>
+          </g>
+          <g fill="#fff" opacity=".7"><circle cx="456" cy="140" r="2"/><circle cx="472" cy="140" r="2"/><circle cx="488" cy="140" r="2"/><circle cx="456" cy="156" r="2"/><circle cx="472" cy="156" r="2"/><circle cx="488" cy="156" r="2"/><circle cx="456" cy="172" r="2"/><circle cx="472" cy="172" r="2"/></g>
+        </svg>
+        <div class="chip c1"><b></b> Garantia de 90 dias</div>
+      </div>
+    </section>
+  </div>
+
+  <section class="band" id="diferenciais" aria-labelledby="dif-t">
+    <div class="label" id="dif-t">Por que escolher a Voltix</div>
+    <div class="feats">
+      <div class="feat">
+        <svg viewBox="0 0 32 32"><path d="M16 4 5 10v12l11 6 11-6V10z"/><path d="M5 10l11 6 11-6M16 16v12"/></svg>
+        <h3>Peças<br>originais</h3>
+        <p>Componentes testados e com nota fiscal em todo reparo.</p>
+      </div>
+      <div class="feat">
+        <svg viewBox="0 0 32 32"><path d="M18 3 7 18h8l-2 11 12-16h-8z"/></svg>
+        <h3>Reparo<br>expresso</h3>
+        <p>Troca de tela e bateria feita enquanto você espera.</p>
+      </div>
+      <div class="feat">
+        <svg viewBox="0 0 32 32"><path d="M16 6v20M10 10l-5 6 5 6M22 10l5 6-5 6"/></svg>
+        <h3>Diagnóstico<br>gratuito</h3>
+        <p>Você só paga se aprovar o orçamento.</p>
+      </div>
+      <div class="feat">
+        <svg viewBox="0 0 32 32"><path d="M16 3 6 7v8c0 7 4 11 10 14 6-3 10-7 10-14V7z"/><path d="m11 16 4 4 7-8"/></svg>
+        <h3>Seus dados<br>protegidos</h3>
+        <p>Sigilo total e backup antes de abrir o aparelho.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="picks" id="servicos" aria-labelledby="serv-t">
+    <div>
+      <h2 id="serv-t">Serviços<br>mais pedidos</h2>
+      <div class="arrows">
+        <button type="button" id="prev" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m15 5-7 7 7 7"/></svg></button>
+        <button type="button" id="next" aria-label="Próximo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg></button>
+      </div>
+    </div>
+    <div class="track" id="track" tabindex="0" aria-label="Lista de serviços">
+      <article class="item">
+        <div class="ph"><img src="https://images.unsplash.com/photo-1746017354755-e6f111cf54db?auto=format&amp;fit=crop&amp;w=900&amp;q=82" alt="Tela de smartphone quebrada sobre bancada de reparo" loading="lazy" decoding="async"></div>
+        <h3>Troca de tela</h3>
+        <div class="row"><div class="price">R$ 189<small>a partir de</small></div><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="#12101f" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="item">
+        <div class="ph"><img src="https://images.unsplash.com/photo-1639776739505-1e55563c9938?auto=format&amp;fit=crop&amp;w=900&amp;q=82" alt="Técnico substituindo a bateria de um smartphone" loading="lazy" decoding="async"></div>
+        <h3>Troca de bateria</h3>
+        <div class="row"><div class="price">R$ 129<small>a partir de</small></div><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="#12101f" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="item">
+        <div class="ph"><img src="https://images.unsplash.com/photo-1709102884400-b50ca1a12bc3?auto=format&amp;fit=crop&amp;w=900&amp;q=82" alt="Técnico fazendo manutenção e configuração em notebook" loading="lazy" decoding="async"></div>
+        <h3>Formatação e sistema</h3>
+        <div class="row"><div class="price">R$ 99<small>a partir de</small></div><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="#12101f" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="item">
+        <div class="ph"><img src="https://images.unsplash.com/photo-1593448848024-77a27f0690b1?auto=format&amp;fit=crop&amp;w=900&amp;q=82" alt="Disco rígido aberto para recuperação de dados" loading="lazy" decoding="async"></div>
+        <h3>Recuperação de dados</h3>
+        <div class="row"><div class="price">R$ 249<small>a partir de</small></div><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="#12101f" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="item">
+        <div class="ph"><img src="https://images.unsplash.com/photo-1713511129992-a9320f883070?auto=format&amp;fit=crop&amp;w=900&amp;q=82" alt="Controle de videogame em detalhe" loading="lazy" decoding="async"></div>
+        <h3>Reparo de console</h3>
+        <div class="row"><div class="price">R$ 159<small>a partir de</small></div><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="#12101f" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="item">
+        <div class="ph"><img src="https://images.unsplash.com/photo-1768633647910-7e6fb53e5b0f?auto=format&amp;fit=crop&amp;w=900&amp;q=82" alt="Técnicos realizando limpeza e manutenção em placa eletrônica" loading="lazy" decoding="async"></div>
+        <h3>Limpeza e manutenção</h3>
+        <div class="row"><div class="price">R$ 79<small>a partir de</small></div><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="#12101f" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="stats" id="numeros" aria-label="Números da Voltix">
+    <div class="stat">
+      <svg viewBox="0 0 40 40"><path d="M20 5 7 12v16l13 7 13-7V12z"/><path d="M7 12l13 7 13-7M20 19v16"/></svg>
+      <div><strong>48 mil+</strong><span>Aparelhos reparados</span></div>
+    </div>
+    <div class="stat">
+      <svg viewBox="0 0 40 40"><circle cx="15" cy="14" r="6"/><path d="M3 34c1-7 6-10 12-10s11 3 12 10"/><circle cx="29" cy="15" r="4.5"/><path d="M29 24c5 0 8 3 9 8"/></svg>
+      <div><strong>32 mil+</strong><span>Clientes atendidos</span></div>
+    </div>
+    <div class="stat">
+      <svg viewBox="0 0 40 40"><circle cx="20" cy="16" r="10"/><path d="m20 11 1.8 3.7 4 .6-2.9 2.8.7 4L20 20.200 16.400 22l.7-4-2.900-2.800 4-.6z"/><path d="m14 25-3 11 9-4 9 4-3-11"/></svg>
+      <div><strong>98%</strong><span>Clientes satisfeitos</span></div>
+    </div>
+    <div class="stat">
+      <svg viewBox="0 0 40 40"><path d="M7 24v-4a13 13 0 0 1 26 0v4"/><rect x="5" y="22" width="7" height="11" rx="3"/><rect x="28" y="22" width="7" height="11" rx="3"/><path d="M33 33c0 3-4 4-9 4"/></svg>
+      <div><strong>7 dias</strong><span>Atendimento por semana</span></div>
+    </div>
+  </section>
+
+  <section class="close" id="contato" aria-label="Depoimento e contato">
+    <figure>
+      <svg viewBox="0 0 240 280" role="img" aria-label="Ilustração de cliente satisfeito">
+        <defs><linearGradient id="gHood" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b9a9f4"/><stop offset="1" stop-color="#7b61ff"/></linearGradient></defs>
+        <path d="M10 280c4-60 36-84 110-84s106 24 110 84z" fill="url(#gHood)"/>
+        <path d="M92 196c6 14 14 20 28 20s22-6 28-20" fill="none" stroke="#6b52e8" stroke-width="5" stroke-linecap="round"/>
+        <rect x="102" y="150" width="36" height="52" rx="14" fill="#d9a77e"/>
+        <ellipse cx="120" cy="108" rx="44" ry="52" fill="#e5b58c"/>
+        <path d="M74 98c0-36 20-52 46-52s46 16 46 52c-8-20-26-28-46-28s-38 8-46 28z" fill="#2a1d1a"/>
+        <rect x="60" y="92" width="120" height="44" rx="18" fill="#1d1a30"/>
+        <rect x="66" y="98" width="108" height="32" rx="13" fill="#3a3466"/>
+        <path d="M60 114h-12M180 114h12" stroke="#1d1a30" stroke-width="10" stroke-linecap="round"/>
+        <path d="M108 160q12 8 24 0" fill="none" stroke="#a5624a" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+    </figure>
+    <div class="quote">
+      <span class="mark" aria-hidden="true">“</span>
+      <blockquote>Levei meu notebook achando que era caso perdido. Saiu no mesmo dia, funcionando melhor que novo.</blockquote>
+      <cite>— Daniel K. <small>Cliente desde 2023 (depoimento fictício)</small></cite>
+    </div>
+    <div class="cta">
+      <h2>Aparelho com defeito?<br>Traga para a Voltix.</h2>
+      <p>Diagnóstico gratuito e orçamento em minutos, sem compromisso.</p>
+      <a class="btn" href="#rodape">Agendar visita <i><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></a>
+      <div class="phone">WhatsApp fictício: <b>(11) 90000-0000</b></div>
+    </div>
+  </section>
+
+  <footer id="rodape">
+    <div class="fgrid">
+      <div>
+        <div class="brand" style="margin-bottom:10px;color:var(--ink)"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3 6 22h10l-2 15 20-22H23z" fill="#12101f"/></svg>VOLTIX</div>
+        <p>Assistência técnica para celulares, notebooks, tablets e consoles.</p>
+      </div>
+      <div>
+        <h4>Endereço</h4>
+        <p>Rua das Palmeiras, 123</p>
+        <p>Centro, Cidade Exemplo – UF</p>
+        <p>CEP 00000-000</p>
+      </div>
+      <div>
+        <h4>Atendimento</h4>
+        <p>Seg a sáb, 9h às 19h</p>
+        <p>(11) 4000-0000</p>
+        <p>contato@voltix.exemplo</p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var t = document.getElementById("track");
+  function step() { var c = t.querySelector(".item"); return c ? c.getBoundingClientRect().width + 14 : 200; }
+  document.getElementById("next").addEventListener("click", function () { t.scrollBy({ left: step(), behavior: "smooth" }); });
+  document.getElementById("prev").addEventListener("click", function () { t.scrollBy({ left: -step(), behavior: "smooth" }); });
+})();
+</script>
+
+</body></html>
